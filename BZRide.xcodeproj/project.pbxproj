@@ -15,6 +15,7 @@
 		7104570F1D94FABC006DF6AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7104570D1D94FABC006DF6AC /* LaunchScreen.storyboard */; };
 		7104571A1D94FABC006DF6AC /* BZRideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710457191D94FABC006DF6AC /* BZRideTests.swift */; };
 		710457251D94FABC006DF6AC /* BZRideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710457241D94FABC006DF6AC /* BZRideUITests.swift */; };
+		710457331D94FF67006DF6AC /* DriverRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710457321D94FF67006DF6AC /* DriverRegViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		710457201D94FABC006DF6AC /* BZRideUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BZRideUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		710457241D94FABC006DF6AC /* BZRideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BZRideUITests.swift; sourceTree = "<group>"; };
 		710457261D94FABC006DF6AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		710457321D94FF67006DF6AC /* DriverRegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverRegViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				710457011D94FABC006DF6AC /* AppDelegate.swift */,
 				710457031D94FABC006DF6AC /* ViewController.swift */,
 				710457051D94FABC006DF6AC /* Main.storyboard */,
+				710457321D94FF67006DF6AC /* DriverRegViewController.swift */,
 				7104570B1D94FABC006DF6AC /* Assets.xcassets */,
 				7104570D1D94FABC006DF6AC /* LaunchScreen.storyboard */,
 				710457101D94FABC006DF6AC /* Info.plist */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7104570A1D94FABC006DF6AC /* BZRide.xcdatamodeld in Sources */,
+				710457331D94FF67006DF6AC /* DriverRegViewController.swift in Sources */,
 				710457041D94FABC006DF6AC /* ViewController.swift in Sources */,
 				710457021D94FABC006DF6AC /* AppDelegate.swift in Sources */,
 			);
