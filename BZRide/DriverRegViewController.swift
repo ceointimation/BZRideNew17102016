@@ -17,6 +17,7 @@ class DriverRegViewController: UIViewController {
      @IBOutlet var ViewInsuranceDetails : UIView!
     
     @IBOutlet var tbFstName: UITextField!
+    @IBOutlet var tbMidName: UITextField!
     @IBOutlet var tbLastName: UITextField!
     @IBOutlet var tbemail: UITextField!
     @IBOutlet var tbPW: UITextField!
@@ -24,9 +25,14 @@ class DriverRegViewController: UIViewController {
     @IBOutlet var tbAddress1: UITextField!
     @IBOutlet var tbAddress2: UITextField!
     @IBOutlet var tbPh: UITextField!
+    @IBOutlet var tbdob: UITextField!
     @IBOutlet var btnRegister: UIButton!
     
+    @IBOutlet var tbcity: UITextField!
     
+    @IBOutlet var tbstate: UITextField!
+    
+    @IBOutlet var tbzip: UITextField!
     @IBOutlet var tbNumberPlateNumber: UITextField!
     @IBOutlet var tbRegistrationState: UITextField!
     @IBOutlet var tbDateofRegistrtation: UITextField!
@@ -55,13 +61,18 @@ class DriverRegViewController: UIViewController {
     @IBOutlet var btnLiscenceDone: UIButton!
     @IBOutlet var btnInsuranceDone: UIButton!
     
+
+    
     
     @IBOutlet var ScrlViewDriverReg1: UIScrollView!
+    
+    @IBOutlet var scrlview: UIScrollView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       ScrlViewDriverReg1.contentSize.height=900
+       ScrlViewDriverReg1.contentSize.height=750
+       scrlview.contentSize.height=670
         
         
         ShowRegistrationView(self)
@@ -110,7 +121,8 @@ class DriverRegViewController: UIViewController {
     
     @IBAction func DoneRegistrationbtnClick(_ sender: AnyObject) {
         
-        if tbFstName.text == "" || tbLastName.text == ""  || tbemail.text == "" || tbPW.text == "" || tbPWConfrm.text == "" || tbAddress1.text == "" || tbAddress2.text == "" || tbPh.text == ""  {
+        if tbFstName.text == "" || tbMidName.text == "" || tbLastName.text == ""  || tbemail.text == "" || tbPW.text == "" || tbPWConfrm.text == "" || tbAddress1.text == "" || tbAddress2.text == "" || tbcity.text == "" || tbstate.text == "" || tbzip.text == "" ||
+            tbPh.text == "" || tbdob.text == "" {
             
             Validation()
             
@@ -135,7 +147,7 @@ class DriverRegViewController: UIViewController {
     
     @IBAction func DoneVehicleDetailsbtnClick(_ sender: AnyObject) {
 
-        if tbNumberPlateNumber.text == "" || tbRegistrationState.text == ""  || tbDateofRegistrtation.text == "" || tbDateofexpiryVehicle.text == ""  || tbYearofManufacture.text == "" || tbVehicleModel.text == ""  || tbVehicleMake.text == "" || tbVehicleColor.text == "" {
+        if tbNumberPlateNumber.text == "" || tbRegistrationState.text == ""  || tbDateofRegistrtation.text == "" || tbDateofexpiryVehicle.text == ""  || 		tbYearofManufacture.text == "" || tbVehicleModel.text == ""  || tbVehicleMake.text == "" || tbVehicleColor.text == "" {
             
             Validation()
             
@@ -208,9 +220,9 @@ class DriverRegViewController: UIViewController {
             request.httpMethod = "POST"
 
             
-            let Registration="firstName="+tbFstName.text!+"&middleName="+tbLastName.text!+"&lastName="+tbLastName.text!+" "
+            let Registration="firstName="+tbFstName.text!+"&middleName="+tbMidName.text!+"&lastName="+tbLastName.text!+" "
             let Registration1=Registration+"&email="+tbemail.text!+"&password="+tbPW.text!+"&address1="+tbAddress1.text!+""
-            let Registration2=Registration1+"&address2="+tbAddress2.text!+"&phone="+tbPh.text!+"&ssn=123&deviceId=1&deviceType=i"
+            let Registration2=Registration1+"&address2="+tbAddress2.text!+"&city="+tbcity.text!+"&state="+tbstate.text!+"&zip="+tbzip.text!+"&phone="+tbPh.text!+"&dob="+tbdob.text!+"&ssn=123&deviceId=1&deviceType=i"
             
             let vehDetails="&vModel="+tbVehicleModel.text!+"&vMake="+tbVehicleMake.text!+"&vColor="+tbVehicleColor.text!+"&vYear="+tbYearofManufacture.text!+""
             let vehDetails1 = vehDetails+"&vNumber="+tbNumberPlateNumber.text!+"&vDateRegistered="+tbDateofRegistrtation.text!+"&vStateRegistered="+tbRegistrationState.text!+" "
@@ -223,7 +235,74 @@ class DriverRegViewController: UIViewController {
             
             let postString = Registration2 + vehDetails2 + vehInsu + vehLIC
             
-          //  print("postString is ==============\(postString)")
+            //print("postString is ==============\(postString)")
+            
+            
+            /*
+             
+             String retData = "";
+             retData += "&firstName=" + bzDriverData.FirstName;
+             retData += "&middleName=" + bzDriverData.MiddleName;
+             retData += "&lastName=" + bzDriverData.LastName;
+             retData += "&email=" + bzDriverData.Email;
+             retData += "&password=" + bzDriverData.Password;
+             retData += "&address1=" + bzDriverData.Address1;
+             retData += "&address2=" + bzDriverData.Address2;
+             retData += "&city=" + bzDriverData.City;       //todo
+             retData += "&state=" + bzDriverData.State;     //todo
+             retData += "&zip=" + bzDriverData.Zip;         //todo
+             
+             retData += "&phone=" + bzDriverData.PhoneNumber;
+             retData += "&dob=" + bzDriverData.dob;         //todo
+             
+             retData += "&ssn=" + bzDriverData.SSN;
+             retData += "&currentlat=" + bzDriverData.currentlat;   //todo
+             retData += "&currentlong=" + bzDriverData.currentlong;     //todo
+             retData += "&deviceType=A";
+             retData += "&devicetoken=x";                                  //todo
+             retData += "&cardType=" + bzDriverData.cardData.cardType;      //todo
+             retData += "&cardProvider=" + bzDriverData.cardData.cardVendor;        //todo
+             
+             retData += "&cardBillingAddress1=" + bzDriverData.cardData.cardBillingAddress1;        //todo
+             retData += "&cardBillingAddress2=" + bzDriverData.cardData.cardBillingAddress2;        //todo
+             retData += "&cardToken=" +  bzDriverData.cardData.cardToken;                           //todo
+             
+             // Bank info
+             retData += "&BankName=" + "testbank";                  //todo
+             retData += "&AccountToken=" + "bzzbbz";                //todo
+             // Insurance Info
+             retData += "&insCompany=" + bzDriverData.driverInsuranceInfo.insuranceCompany;
+             retData += "&insPolicyNumber=" + bzDriverData.driverInsuranceInfo.insuranceNumber;
+             retData += "&insValidFromDate=" + bzDriverData.driverInsuranceInfo.insurancedateFrom;
+             retData += "&insExpDate=" + bzDriverData.driverInsuranceInfo.insurancedateOfExpiry;
+             //license Info
+             retData += "&licenseNumber=" + bzDriverData.driverLicenseInfo.licenseNumber;
+             retData += "&licenceStateIssued=" + bzDriverData.driverLicenseInfo.licensestateIssued;
+             retData += "&licenseDateIssued=" + bzDriverData.driverLicenseInfo.licensedateOfIssue;
+             retData += "&licenseExpDate=" + bzDriverData.driverLicenseInfo.licensedateofExpiry;
+             
+             //vehicle Reg Info
+             retData += "&vNumber=" + bzDriverData.driverVehRegInfo.vehicleNumberPlateNumber;
+             retData += "&vStateRegistered=" + bzDriverData.driverVehRegInfo.vehicleRegistrationState;
+             retData += "&vDateRegistered=" + bzDriverData.driverVehRegInfo.vehicledateOfRegistration;
+             retData += "&vExpiryDate=" + bzDriverData.driverVehRegInfo.vehicledateOfExpiry;
+             
+             // vehicle model info
+             retData += "&vYear=" + bzDriverData.driverVehicleInfo.vehicleYearOfManufacture;
+             retData += "&vModel=" + bzDriverData.driverVehicleInfo.vehicleModel;
+             retData += "&vMake=" + bzDriverData.driverVehicleInfo.vehicleMake;
+             retData += "&vColor=" + bzDriverData.driverVehicleInfo.vehicleColor;
+             
+             In another service call update bank details calling UpdateInitialBankInfo.php
+             add param "&driverID=<id>" returned from above first register driver service
+             retData += "&AccountType=" +"individual";
+             retData += "&BankName=" + bzDriverData.driverBankInfo.BankName;
+             retData += "&accountholdername=" + bzDriverData.driverBankInfo.BankAccountHolderName;
+             retData += "&routingnumber=" + bzDriverData.driverBankInfo.BankAccountRoutingNumber;
+             retData += "&accountnumber=" + bzDriverData.driverBankInfo.BankAccountNumber;
+             
+             
+ */
             
             request.httpBody = postString.data(using: .utf8)
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -331,7 +410,7 @@ class DriverRegViewController: UIViewController {
         
         let myAlert = UIAlertView()
         //myAlert.title = "Title"
-        myAlert.message = "Please FIll All Fields"
+        myAlert.message = "Please Fill All Fields"
         myAlert.addButton(withTitle: "Ok")
         myAlert.delegate = self
         myAlert.show()
